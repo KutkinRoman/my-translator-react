@@ -6,7 +6,7 @@ import {WordSoundService} from "../../data/services/WordSoundService";
 import {WordMeaningService} from "../../data/services/WordMeaningService";
 import {WordMeaning} from "../../data/model/WordMeaning";
 import {useAppStore} from "../../context/useAppStore";
-import {blue, grey, lightBlue} from "@mui/material/colors";
+import {grey, lightBlue} from "@mui/material/colors";
 
 const wordSoundService = new WordSoundService()
 

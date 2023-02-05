@@ -12,10 +12,10 @@ const MainPage = () => {
             <NavBar/>
             <ContainerStyled id={id('Container')}>
                 <Grid container spacing={2} id={'Grid'}>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} sm={12} mb={6} lg={6}>
                         <SourceTextComponent/>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} sm={12} mb={6} lg={6}>
                         <MultiTextComponent/>
                     </Grid>
                 </Grid>
