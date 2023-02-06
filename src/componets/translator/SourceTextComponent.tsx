@@ -15,18 +15,30 @@ import {
 import {Lang, langs} from "../../data/enums/Lang";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import {WordSoundService} from "../../data/services/WordSoundService";
-import {CommonTranslatorProps} from "./Translator";
+import {TranslatorProps} from "./Translator";
+import {useLocation} from "react-router-dom";
+import {useAppStore} from "../../context/useAppStore";
 
 const wordSoundService = new WordSoundService();
 
-
-
-const SourceTextComponent = ({translatorStore}: CommonTranslatorProps) => {
+const SourceTextComponent = ({translatorStore, index}: TranslatorProps) => {
     const theme = useTheme();
+    const appStore = useAppStore()
+    const location = useLocation()
+
+    const updateParams = () => {
+        if (index === 0) {
+            const params = new URLSearchParams(location.search)
+            params.set('q', translatorStore.getParamsJson())
+            window.history.replaceState({}, '', `${location.pathname}?${params.toString()}`);
+        }
+        appStore.writeTranslatorStores()
+    }
 
     const onChangeTextHandler = async (e: any) => {
         translatorStore.sourceText = e.target.value
-        translatorStore.runTranslate()
+        await translatorStore.runTranslate()
+        updateParams()
     }
 
     const onChangeLangHandler = async (e: any) => {
@@ -35,10 +47,14 @@ const SourceTextComponent = ({translatorStore}: CommonTranslatorProps) => {
         translatorStore.translateText = ''
         await translatorStore.runTranslate()
         translatorStore.updateTranslateLines()
+        updateParams()
     }
 
-    const onChangeRowHandler = (e: any) =>  translatorStore.rows = e.target.value
-    
+    const onChangeRowHandler = (e: any) => {
+        translatorStore.rows = e.target.value
+        updateParams()
+    }
+
     const play = async () => {
         const audio = await wordSoundService.getAudio({
             text: translatorStore.sourceText,
@@ -105,7 +121,7 @@ const SourceTextComponent = ({translatorStore}: CommonTranslatorProps) => {
             <Tooltip title={'Play'}>
                 <IconButton
                     color={'primary'}
-                            onClick={play}
+                    onClick={play}
                     size={'large'}
                     disabled={!translatorStore.sourceText}
                 >

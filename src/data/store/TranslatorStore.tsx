@@ -7,6 +7,21 @@ export type TranslateType = 'Word' | 'Sentence'
 
 export const TranslateTypes: TranslateType[] = ['Word', 'Sentence']
 
+export interface TranslatorParams {
+
+    translateType: TranslateType
+
+    sourceText: string
+
+    sourceLang: Lang
+
+    targetLang: Lang
+
+    voice: VoiceEnum
+
+    rows: number
+}
+
 export class TranslatorStore {
 
     wordTranslateService = new WordTranslateService()
@@ -47,6 +62,31 @@ export class TranslatorStore {
             this.translateText = this.sourceText
         }
         this.updateTranslateLines()
+    }
+
+    setParams(p: TranslatorParams) {
+        this.translateType = p.translateType || 'Sentence'
+        this.sourceText = p.sourceText || ''
+        this.sourceLang = p.sourceLang || Lang.EN
+        this.targetLang = p.targetLang || Lang.EN
+        this.voice = p.voice || VoiceEnum.MALE_1
+        this.rows = p.rows || 10
+        this.runTranslate()
+    }
+
+    getParams(): TranslatorParams {
+        return {
+            translateType: this.translateType,
+            sourceText: this.sourceText,
+            sourceLang: this.sourceLang,
+            targetLang: this.targetLang,
+            voice: this.voice,
+            rows: this.rows
+        }
+    }
+
+    getParamsJson(): string {
+        return JSON.stringify(this.getParams())
     }
 
 }

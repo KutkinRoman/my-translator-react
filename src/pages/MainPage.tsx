@@ -1,12 +1,16 @@
 import {Button, Container, Divider, styled} from '@mui/material';
-import React from 'react';
+import React, {useEffect} from 'react';
 import NavBar from "../componets/nav-bar/NavBar";
 import Translator from "../componets/translator/Translator";
 import {useAppStore} from "../context/useAppStore";
 import {observer} from "mobx-react-lite";
-import {TranslatorStore} from "../data/store/TranslatorStore";
+import {TranslatorParams, TranslatorStore} from "../data/store/TranslatorStore";
+import {useLocation} from "react-router-dom";
+
 
 const MainPage = () => {
+    const location = useLocation();
+    const params = new URLSearchParams(location.search)
 
     const appStore = useAppStore();
     const translatorStores = useAppStore().translatorStores
@@ -14,6 +18,13 @@ const MainPage = () => {
     const onAddTranslatorHandler = () => {
         appStore.setTranslatorStores([...appStore.translatorStores, new TranslatorStore()])
     }
+
+    useEffect(() => {
+        const json = params.get('q')
+        if (json) {
+            appStore.translatorStores[0].setParams(JSON.parse(json) as TranslatorParams)
+        }
+    }, [])
 
     return (
         <WrapperStyled>
@@ -62,7 +73,8 @@ const ContainerStyled = styled(Container)({
 });
 
 const FooterContainerStyled = styled(Container)({
-    paddingTop: 50
+    paddingTop: 50,
+    paddingBottom: 100
 });
 
 export default observer(MainPage);

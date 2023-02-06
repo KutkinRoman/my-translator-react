@@ -4,7 +4,6 @@ import {Box, Card, FormControl, IconButton, InputLabel, MenuItem, Select, styled
 import TranslateLineComponent from "./TranslateLineComponent";
 import {langs} from "../../data/enums/Lang";
 import {voices} from "../../data/enums/Voice";
-import {grey} from "@mui/material/colors";
 import WordMeaningDialog from "./WordMeaningDialog";
 import {TranslateTypes} from "../../data/store/TranslatorStore";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
@@ -12,29 +11,45 @@ import {WordSoundService} from "../../data/services/WordSoundService";
 import {TranslatorProps} from "./Translator";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import {useAppStore} from "../../context/useAppStore";
+import {useLocation} from "react-router-dom";
 
 const wordSoundService = new WordSoundService();
 
 const MultiTextComponent = ({translatorStore, index}: TranslatorProps) => {
     const appStore = useAppStore()
+    const location = useLocation()
+
+    const updateParams = () => {
+        if (index === 0) {
+            const params = new URLSearchParams(location.search)
+            params.set('q', translatorStore.getParamsJson())
+            window.history.replaceState({}, '', `${location.pathname}?${params.toString()}`);
+        }
+        appStore.writeTranslatorStores()
+    }
 
     const onChangeLangHandler = async (e: any) => {
         translatorStore.targetLang = e.target.value
         await translatorStore.runTranslate()
         translatorStore.updateTranslateLines()
+        updateParams()
     }
 
     function onChangeVoiceHandler(e: any) {
         translatorStore.voice = e.target.value
+        updateParams()
     }
 
     function onChangeTranslateTypeHandler(e: any) {
         translatorStore.translateType = e.target.value;
         translatorStore.updateTranslateLines()
+        updateParams()
     }
 
-    const removerTranslatorStore = () => appStore.removerTranslatorStoreByIndex(index)
-
+    const removerTranslatorStore = () => {
+        appStore.removerTranslatorStoreByIndex(index)
+        appStore.writeTranslatorStores()
+    }
 
     const play = async () => {
         const audio = await wordSoundService.getAudio({

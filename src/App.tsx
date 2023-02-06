@@ -1,13 +1,16 @@
 import React from 'react';
-import MainPage from "./pages/MainPage";
 import {AppStoreContextProvider} from "./context/useAppStore";
 import ThemeContextProvider from "./context/ThemeContext";
+import RouterContextProvider from "./router/RouterContextProvider";
+import {BrowserRouter} from "react-router-dom";
 
 function App() {
     return (
         <ThemeContextProvider>
             <AppStoreContextProvider>
-                <MainPage/>
+                <BrowserRouter>
+                    <RouterContextProvider/>
+                </BrowserRouter>
             </AppStoreContextProvider>
         </ThemeContextProvider>
     );
