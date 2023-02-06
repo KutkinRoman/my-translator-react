@@ -5,7 +5,7 @@ const API = axios.create({
     baseURL: 'https://translate.googleapis.com'
 })
 
-export type TranslateReponse = [
+export type TranslateResponse = [
     [
         [string, string, any, any, number, any, any, any[][], string[][][]][],
         any,
@@ -29,7 +29,7 @@ interface TranslateParma {
 export class WordTranslateService {
 
     async translate(props: TranslateParma) {
-        return await API.get('/translate_a/single', {
+        return await API.get<TranslateResponse>('/translate_a/single', {
             params: {
                 client: 'gtx',
                 dt: 't',

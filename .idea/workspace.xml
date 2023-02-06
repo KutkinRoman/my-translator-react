@@ -6,17 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6e1a667d-db95-4912-aac1-fe9644419a7a" name="Changes" comment="Added Theme">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/componets/translator/MultiTextComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/componets/translator/MultiTextComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/componets/translator/SourceTextComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/componets/translator/SourceTextComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/componets/translator/Translator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/componets/translator/Translator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/ThemeContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/ThemeContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/store/AppStore.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/store/AppStore.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/services/WordTranslationService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/services/WordTranslationService.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/store/TranslatorStore.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/store/TranslatorStore.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MainPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MainPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +92,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675654744579</updated>
-      <workItem from="1675654748598" duration="30874000" />
+      <workItem from="1675654748598" duration="31788000" />
     </task>
     <task id="LOCAL-00001" summary="TranslateLineComponent">
       <created>1675669471128</created>
@@ -124,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675683269663</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added Theme">
+      <created>1675690778699</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1675690778699</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

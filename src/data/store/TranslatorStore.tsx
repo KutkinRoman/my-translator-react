@@ -57,7 +57,10 @@ export class TranslatorStore {
                 src: this.sourceLang,
                 tag: this.targetLang
             })
-            this.translateText = response.data[0][0][0]
+            this.translateText = response.data[0].map(val => {
+                console.log(val)
+                return val[0]
+            }).join('')
         } else {
             this.translateText = this.sourceText
         }
