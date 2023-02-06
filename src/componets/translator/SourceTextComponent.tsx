@@ -1,8 +1,18 @@
 import React from 'react';
 import {observer} from "mobx-react-lite";
-import {Box, Card, FormControl, IconButton, InputLabel, MenuItem, Select, styled, Tooltip} from "@mui/material";
+import {
+    Box,
+    Card,
+    FormControl,
+    IconButton,
+    InputLabel,
+    MenuItem,
+    Select,
+    styled,
+    Tooltip,
+    useTheme
+} from "@mui/material";
 import {Lang, langs} from "../../data/enums/Lang";
-import {grey} from "@mui/material/colors";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import {WordSoundService} from "../../data/services/WordSoundService";
 import {CommonTranslatorProps} from "./Translator";
@@ -12,7 +22,8 @@ const wordSoundService = new WordSoundService();
 
 
 const SourceTextComponent = ({translatorStore}: CommonTranslatorProps) => {
-    
+    const theme = useTheme();
+
     const onChangeTextHandler = async (e: any) => {
         translatorStore.sourceText = e.target.value
         translatorStore.runTranslate()
@@ -88,6 +99,7 @@ const SourceTextComponent = ({translatorStore}: CommonTranslatorProps) => {
                     value={translatorStore.sourceText}
                     onChange={onChangeTextHandler}
                     rows={translatorStore.rows}
+                    style={{color: theme.palette.text.primary}}
                 />
             </CardStyled>
             <Tooltip title={'Play'}>
@@ -107,7 +119,7 @@ const SourceTextComponent = ({translatorStore}: CommonTranslatorProps) => {
 
 const CardStyled = styled(Card)({
     padding: 5,
-    background: grey[50]
+    // background: grey[50]
 })
 
 const TextareaStyled = styled('textarea')({

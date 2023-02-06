@@ -156,7 +156,7 @@ const MultiTextComponent = ({translatorStore, index}: TranslatorProps) => {
 
 const CardStyled = styled(Card)({
     padding: 5,
-    background: grey[50],
+    // background: grey[50],
     wordWrap: 'break-word',
 })
 

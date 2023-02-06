@@ -7,6 +7,7 @@ import {observer} from "mobx-react-lite";
 import {TranslatorStore} from "../data/store/TranslatorStore";
 
 const MainPage = () => {
+
     const appStore = useAppStore();
     const translatorStores = useAppStore().translatorStores
 
@@ -33,8 +34,9 @@ const MainPage = () => {
             })}
             <FooterContainerStyled maxWidth={'xl'}>
                 <Button
-                    variant={'outlined'}
+                    variant={'text'}
                     size={'small'}
+                    color={'secondary'}
                     fullWidth
                     onClick={onAddTranslatorHandler}
                     disabled={translatorStores.length > 100}
@@ -46,10 +48,14 @@ const MainPage = () => {
     );
 };
 
-const WrapperStyled = styled('div')({
-    overflowX: 'hidden',
-    paddingBottom: 100
-});
+const WrapperStyled = styled('div')(({theme}) => (
+    {
+        overflowX: 'hidden',
+        paddingBottom: 100,
+        background: theme.palette.background.default,
+        minHeight: '100vh'
+    }
+));
 
 const ContainerStyled = styled(Container)({
     overflowX: 'hidden',

@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo, useState} from 'react';
-import {IconButton, styled, Tooltip, Typography} from "@mui/material";
+import {IconButton, styled, Tooltip, Typography, useTheme} from "@mui/material";
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import {WordSoundService} from "../../data/services/WordSoundService";
 import {useAppStore} from "../../context/useAppStore";
@@ -18,7 +18,7 @@ interface TranslateLineComponentProps extends CommonTranslatorProps{
 
 const TranslateLineComponent = ({translateLine, translatorStore}: TranslateLineComponentProps) => {
     const wordMeaningDialogStore = useAppStore().wordMeaningDialogStore
-
+    const theme = useTheme();
     const [isPlay, setIsPlay] = useState(false)
 
     const [wordMeanings, setWordMeanings] = useState<WordMeaning[]>([])
@@ -55,6 +55,8 @@ const TranslateLineComponent = ({translateLine, translatorStore}: TranslateLineC
         async function searchMeaning() {
             const response = await wordMeaningService.search({
                 search: translateLine,
+                page: 1,
+                pageSize: 3
             })
             setWordMeanings(response.data)
         }
@@ -70,7 +72,7 @@ const TranslateLineComponent = ({translateLine, translatorStore}: TranslateLineC
                 children={translateLine + `${(translatorStore.translateType === 'Sentence' && translateLine.length > 1) ? '.' : ''}`}
                 component={'span'}
                 style={{fontSize: 25}}
-                color={isPlay ? lightBlue[700] : grey[900]}
+                color={isPlay ? theme.palette.primary.main : theme.palette.text.primary}
             />
             <SpaceSpan/>
             {(translateLine.length > 1 && translatorStore.translateType === 'Word' && mainWordMeaning) &&
@@ -94,8 +96,6 @@ const TranslateLineComponent = ({translateLine, translatorStore}: TranslateLineC
 const WordComponentStyled = styled('span')({
     position: 'relative'
 })
-
-const WordSpan = styled(Typography)({})
 
 const SpaceSpan = styled(IconButton)({
     minWidth: 5
