@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6e1a667d-db95-4912-aac1-fe9644419a7a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/my-translator-react.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/componets/translator/WordMeaningCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/componets/translator/WordMeaningDialog.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/context/ThemeContext.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/services/WordTranslationService.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/store/WordMeaningDialogStore.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/componets/nav-bar/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/componets/nav-bar/NavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/componets/translator/MultiTextComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/componets/translator/MultiTextComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/componets/translator/SourceTextComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/componets/translator/SourceTextComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/componets/translator/WordComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/componets/translator/TranslateLineComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/model/WordMeaning.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/model/WordMeaning.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/store/AppStore.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/store/AppStore.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/store/TranslatorStore.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/store/TranslatorStore.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/store/WordStore.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MainPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MainPage.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2LLeMbyC0tKm2nkbBgoqcw71VE0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "js.last.introduce.type": "CONST",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "ts.external.directory.path": "C:\\Users\\R.Kutkin\\Documents\\react-projects\\my-translator-react\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="npm.start">
+    <configuration name="rest-api | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="rest-api | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" index="2" requestIdentifier="#2" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="rest-api | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" index="3" requestIdentifier="#3" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+        <item itemvalue="HTTP Request.rest-api | #3" />
+        <item itemvalue="HTTP Request.rest-api | #1" />
+        <item itemvalue="HTTP Request.rest-api | #2" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6e1a667d-db95-4912-aac1-fe9644419a7a" name="Changes" comment="" />
+      <created>1675654744579</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675654744579</updated>
+      <workItem from="1675654748598" duration="12608000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

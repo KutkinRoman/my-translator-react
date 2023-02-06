@@ -1,31 +1,49 @@
 import {makeAutoObservable} from "mobx";
 import {Lang} from "../enums/Lang";
 import {VoiceEnum} from "../enums/Voice";
+import {WordTranslateService} from "../services/WordTranslationService";
+
+export type TranslateType = 'Word' | 'Sentence'
+
+export const TranslateTypes: TranslateType[] = ['Word', 'Sentence']
 
 export class TranslatorStore {
+
+    wordTranslateService = new WordTranslateService()
+
+    translateType: TranslateType = 'Sentence'
 
     sourceText: string = ''
 
     sourceLang = Lang.EN
-    fullText: string = ''
 
-    words: string[] = []
+    translateText: string = ''
 
-    targetLang = Lang.RU;
+    translateLines: string[] = []
+
+    targetLang = Lang.EN;
+
     voice = VoiceEnum.MALE_1;
 
     constructor() {
         makeAutoObservable(this, {})
     }
 
-    setSourceText(sourceText: string) {
-        this.sourceText = sourceText;
+    updateTranslateLines() {
+        this.translateLines = this.translateText.split((this.translateType === 'Sentence') ? '.' : ' ')
     }
 
-    setFullText(fullText: string) {
-        this.fullText = fullText;
-    }
-    updateWords() {
-        this.words = this.sourceText.split(' ')
+    async runTranslate() {
+        if (this.sourceLang !== this.targetLang && this.sourceText) {
+            const response = await this.wordTranslateService.translate({
+                q: this.sourceText,
+                src: this.sourceLang,
+                tag: this.targetLang
+            })
+            this.translateText = response.data[0][0][0]
+        } else {
+            this.translateText = this.sourceText
+        }
+        this.updateTranslateLines()
     }
 }

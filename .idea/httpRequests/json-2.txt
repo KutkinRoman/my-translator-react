@@ -1,0 +1,31 @@
+[
+  [
+    [
+      "Spring Framework предоставляет комплексную модель программирования и конфигурации для современных корпоративных приложений на основе Java — на любой платформе развертывания.",
+      "The Spring Framework provides a comprehensive programming and configuration model for modern Java-based enterprise applications - on any kind of deployment platform.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c5f104380d2f4c4bf0c587f790a21817",
+            "en_ru_2021q4.md"
+          ]
+        ]
+      ]
+    ]
+  ],
+  null,
+  "en",
+  null,
+  null,
+  null,
+  null,
+  []
+]

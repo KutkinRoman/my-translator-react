@@ -10,7 +10,7 @@ const MainPage = () => {
     return (
         <WrapperStyled id={id('Wrapper')}>
             <NavBar/>
-            <ContainerStyled id={id('Container')}>
+            <ContainerStyled id={id('Container')} maxWidth={'xl'}>
                 <Grid container spacing={2} id={'Grid'}>
                     <Grid item xs={12} sm={12} mb={6} lg={6}>
                         <SourceTextComponent/>
@@ -24,13 +24,11 @@ const MainPage = () => {
     );
 };
 
-const WrapperStyled = styled('div')({
-
-});
+const WrapperStyled = styled('div')({});
 
 const ContainerStyled = styled(Container)({
-    paddingTop: 25,
-    paddingBottom: 25,
+    paddingTop: 100,
+    paddingBottom: 100
 });
 
 

@@ -5,18 +5,21 @@ import {useAppStore} from "../../context/useAppStore";
 import {Lang, langs} from "../../data/enums/Lang";
 import {grey} from "@mui/material/colors";
 
+
 const SourceTextComponent = () => {
     const translator = useAppStore().translatorStore;
 
-    const onChangeTextHandler = (e: any) => {
-        translator.setSourceText(e.target.value)
-        translator.updateWords()
+    const onChangeTextHandler = async (e: any) => {
+        translator.sourceText = e.target.value
+        translator.runTranslate()
     }
 
-    const onChangeLangHandler = (e: any) => {
+    const onChangeLangHandler = async (e: any) => {
         translator.sourceLang = e.target.value
         translator.sourceText = ''
-        translator.updateWords()
+        translator.translateText = ''
+        await translator.runTranslate()
+        translator.updateTranslateLines()
     }
 
     return (
@@ -43,15 +46,6 @@ const SourceTextComponent = () => {
                 </Select>
             </FormControl>
             <CardStyled>
-                {/*<TextField*/}
-                {/*    id={'sourceTextField'}*/}
-                {/*    fullWidth*/}
-                {/*    value={translator.sourceText}*/}
-                {/*    onChange={onChangeTextHandler}*/}
-                {/*    multiline*/}
-                {/*    rows={15}*/}
-                {/*    variant={'standard'}*/}
-                {/*/>*/}
                 <TextareaStyled
                     id={'sourceTextField'}
                     value={translator.sourceText}
@@ -72,7 +66,7 @@ const CardStyled = styled(Card)({
 
 const TextareaStyled = styled('textarea')({
     resize: 'none',
-    fontSize: 18,
+    fontSize: 25,
     border: 'none',
     height: '100%',
     width: '100%',

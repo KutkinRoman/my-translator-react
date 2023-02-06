@@ -1,0 +1,50 @@
+GET https://translate.googleapis.com/translate_a/single?sl=en&tl=ru&q=Word
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-02-06T115111.400.html
+
+###
+
+GET https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ru&q=Word
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> json-3.txt
+
+###
+
+GET https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ru&dt=t&q=The Spring Framework provides a comprehensive programming and configuration model for modern Java-based enterprise applications - on any kind of deployment platform.
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> json-2.txt
+
+###
+
+GET https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ru&dt=t&q=Word
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> json-1.txt
+
+###
+
+GET https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ru&dt=t&q=The Spring Framework provides a comprehensive programming and configuration model for modern Java-based enterprise applications - on any kind of deployment platform.
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> json.txt
+
+###
+

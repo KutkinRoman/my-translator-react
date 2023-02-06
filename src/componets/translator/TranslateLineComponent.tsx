@@ -1,24 +1,26 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import {IconButton, styled, Tooltip, Typography} from "@mui/material";
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
-import TranslateIcon from '@mui/icons-material/Translate';
 import {WordSoundService} from "../../data/services/WordSoundService";
-import {WordMeaningService} from "../../data/services/WordMeaningService";
-import {WordMeaning} from "../../data/model/WordMeaning";
 import {useAppStore} from "../../context/useAppStore";
 import {grey, lightBlue} from "@mui/material/colors";
+import {WordMeaning} from "../../data/model/WordMeaning";
+import TranslateIcon from "@mui/icons-material/Translate";
+import {WordMeaningService} from "../../data/services/WordMeaningService";
 
 const wordSoundService = new WordSoundService()
-
 const wordMeaningService = new WordMeaningService();
 
-interface WordComponentProps {
-    word: string;
+interface TranslateLineComponentProps {
+    translateLine: string;
 }
 
-const WordComponent = ({word}: WordComponentProps) => {
+const TranslateLineComponent = ({translateLine}: TranslateLineComponentProps) => {
     const translator = useAppStore().translatorStore
+    const wordMeaningDialogStore = useAppStore().wordMeaningDialogStore
+
     const [isPlay, setIsPlay] = useState(false)
+
     const [wordMeanings, setWordMeanings] = useState<WordMeaning[]>([])
 
     const mainWordMeaning = useMemo(() => {
@@ -32,7 +34,7 @@ const WordComponent = ({word}: WordComponentProps) => {
         setIsPlay(true)
         try {
             const audio = await wordSoundService.getAudio({
-                text: word,
+                text: translateLine,
                 lang: translator.targetLang,
                 voice: translator.voice
             })
@@ -44,39 +46,46 @@ const WordComponent = ({word}: WordComponentProps) => {
         }
     }
 
+    function onOpenDialogHandle() {
+        wordMeaningDialogStore.isOpen = true
+        wordMeaningDialogStore.wordMeanings = wordMeanings
+    }
+
     useEffect(() => {
         async function searchMeaning() {
             const response = await wordMeaningService.search({
-                search: word,
+                search: translateLine,
             })
             setWordMeanings(response.data)
         }
 
-        searchMeaning()
-    }, [isPlay])
+        if (translator.translateType){
+            searchMeaning()
+        }
+    }, [translateLine, translator.translateType])
 
     return (
         <WordComponentStyled>
             <Typography
-                children={word}
+                children={translateLine + `${(translator.translateType === 'Sentence' && translateLine.length > 1) ? '.' : ''}`}
                 component={'span'}
-                style={{fontSize: 18}}
+                style={{fontSize: 25}}
                 color={isPlay ? lightBlue[700] : grey[900]}
             />
             <SpaceSpan/>
-            {word.length > 1 &&
-                <React.Fragment>
-                    <Tooltip title={mainWordMeaning}>
-                        <IconButtonTranslateStyled color={'primary'}>
-                            <TranslateIcon style={{fontSize: 8}}/>
-                        </IconButtonTranslateStyled>
-                    </Tooltip>
-                    <Tooltip title={'Play'}>
-                        <IconButtonPlayStyled color={'primary'} onClick={play}>
-                            <VolumeUpIcon style={{fontSize: 8}}/>
-                        </IconButtonPlayStyled>
-                    </Tooltip>
-                </React.Fragment>
+            {(translateLine.length > 1 && translator.translateType === 'Word') &&
+                <Tooltip title={mainWordMeaning}>
+                    <IconButtonTranslateStyled color={'primary'} onClick={onOpenDialogHandle}>
+                        <TranslateIcon style={{fontSize: 15}}/>
+                    </IconButtonTranslateStyled>
+                </Tooltip>
+            }
+            {translateLine.length > 1 &&
+                <Tooltip title={'Play'}>
+                    <IconButtonPlayStyled color={'primary'} onClick={play}>
+                        <VolumeUpIcon style={{fontSize: 15}}/>
+                    </IconButtonPlayStyled>
+                </Tooltip>
             }
         </WordComponentStyled>
     )
@@ -92,18 +101,19 @@ const SpaceSpan = styled(IconButton)({
     minWidth: 5
 })
 
+const IconButtonTranslateStyled = styled(IconButton)({
+    position: 'absolute',
+    top: -20,
+    right: 20,
+    zIndex: 1
+})
+
 const IconButtonPlayStyled = styled(IconButton)({
     position: 'absolute',
-    top: -10,
+    top: -20,
     right: 0,
     zIndex: 1
 })
 
-const IconButtonTranslateStyled = styled(IconButton)({
-    position: 'absolute',
-    top: -10,
-    right: 15,
-    zIndex: 1
-})
 
-export default WordComponent;
+export default TranslateLineComponent;

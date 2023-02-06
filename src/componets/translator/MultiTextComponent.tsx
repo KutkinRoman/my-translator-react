@@ -2,25 +2,35 @@ import React from 'react';
 import {observer} from "mobx-react-lite";
 import {Box, Card, FormControl, InputLabel, MenuItem, Select, styled} from "@mui/material";
 import {useAppStore} from "../../context/useAppStore";
-import WordComponent from "./WordComponent";
+import TranslateLineComponent from "./TranslateLineComponent";
 import {langs} from "../../data/enums/Lang";
 import {voices} from "../../data/enums/Voice";
 import {grey} from "@mui/material/colors";
+import WordMeaningDialog from "./WordMeaningDialog";
+import {TranslateType, TranslateTypes} from "../../data/store/TranslatorStore";
 
 const MultiTextComponent = () => {
     const translator = useAppStore().translatorStore;
 
-    const onChangeLangHandler = (e: any) => {
+    const onChangeLangHandler = async (e: any) => {
         translator.targetLang = e.target.value
+        await translator.runTranslate()
+        translator.updateTranslateLines()
     }
 
     function onChangeVoiceHandler(e: any) {
         translator.voice = e.target.value
     }
 
+    function onChangeTranslateTypeHandler(e: any) {
+        translator.translateType = e.target.value;
+        translator.updateTranslateLines()
+    }
+
     return (
         <Box>
-            <FormControl variant={'standard'}  sx={{ m: 1, minWidth: 50 }}>
+            <WordMeaningDialog/>
+            <FormControl variant={'standard'} sx={{m: 1, minWidth: 50}}>
                 <InputLabel id={'targetTextLangLabel'}>Lang</InputLabel>
                 <Select
                     labelId={'targetTextLangLabel'}
@@ -41,7 +51,7 @@ const MultiTextComponent = () => {
                     })}
                 </Select>
             </FormControl>
-            <FormControl variant={'standard'}  sx={{ m: 1, minWidth: 50 }}>
+            <FormControl variant={'standard'} sx={{m: 1, minWidth: 50}}>
                 <InputLabel id={'voiceLabel'}>Voice</InputLabel>
                 <Select
                     labelId={'voiceLabel'}
@@ -62,12 +72,33 @@ const MultiTextComponent = () => {
                     })}
                 </Select>
             </FormControl>
+            <FormControl variant={'standard'} sx={{m: 1, minWidth: 150}}>
+                <InputLabel id={'translateTypeLabel'}>Translate Type</InputLabel>
+                <Select
+                    labelId={'translateTypeLabel'}
+                    id={'translateTypeSelect'}
+                    label={'Translate Type'}
+                    value={translator.translateType}
+                    onChange={onChangeTranslateTypeHandler}
+                >
+                    {TranslateTypes.map(type => {
+                        return (
+                            <MenuItem
+                                id={`menuItemTranslateType${type}`}
+                                key={`menuItemTranslateType${type}`}
+                                value={type}
+                                children={type.toUpperCase()}
+                            />
+                        )
+                    })}
+                </Select>
+            </FormControl>
             <CardStyled>
-                {translator.words.map((word, idx) => {
+                {translator.translateLines.map((line, idx) => {
                     return (
-                        <WordComponent
-                            key={`word_idx_${idx}`}
-                            word={word}
+                        <TranslateLineComponent
+                            key={`translate_lines_idx_${idx}`}
+                            translateLine={line}
                         />
                     )
                 })}
@@ -84,7 +115,6 @@ const CardStyled = styled(Card)({
     // overflowY: 'scroll',
     // overflowX: 'hidden'
 })
-
 
 
 export default observer(MultiTextComponent);

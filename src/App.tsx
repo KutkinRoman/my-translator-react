@@ -1,12 +1,15 @@
 import React from 'react';
 import MainPage from "./pages/MainPage";
 import {AppStoreContextProvider} from "./context/useAppStore";
+import ThemeContextProvider from "./context/ThemeContext";
 
 function App() {
     return (
-        <AppStoreContextProvider>
-            <MainPage/>
-        </AppStoreContextProvider>
+        <ThemeContextProvider>
+            <AppStoreContextProvider>
+                <MainPage/>
+            </AppStoreContextProvider>
+        </ThemeContextProvider>
     );
 }
 
