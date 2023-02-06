@@ -51,6 +51,49 @@ const darkTheme = createTheme({
 
 });
 
+const newDarkTheme = createTheme({
+    palette: {
+
+        mode: 'dark',
+
+        primary: {
+            light: '#67e8f9',
+            main: '#06b6d4',
+            dark: '#0e7490',
+            // light: '#ea580c',
+            // main: '#ea580c',
+            // dark: '#ea580c'
+        },
+
+        secondary: {
+            light: '#fafafa',
+            main: '#e5e5e5',
+            dark: '#737373',
+            // light: '#ea580c',
+            // main: '#ea580c',
+            // dark: '#ea580c'
+        },
+
+        text: {
+            // disabled: '#ea580c',
+            // primary: '#ea580c',
+            // secondary: '#ea580c'
+        },
+
+        divider: '#ff4f00',
+
+        background: {
+            // default: '#000810',
+            // paper: '#000810'
+            default: '#020125',
+            paper: '#020125'
+        },
+
+
+    },
+
+});
+
 
 const ThemeContextProvider = ({children}: { children: React.ReactNode }) => {
     const [mode, setMode] = React.useState<'light' | 'dark'>('dark');
@@ -66,7 +109,7 @@ const ThemeContextProvider = ({children}: { children: React.ReactNode }) => {
 
     const theme = useMemo(() => {
         if (mode === 'dark') {
-            return darkTheme
+            return newDarkTheme
         }
         return lightTheme
     }, [mode])

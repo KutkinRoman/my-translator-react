@@ -73,7 +73,7 @@ export class TranslatorStore {
         this.sourceLang = p.sourceLang || Lang.EN
         this.targetLang = p.targetLang || Lang.EN
         this.voice = p.voice || VoiceEnum.MALE_1
-        this.rows = p.rows || 10
+        this.rows = p.rows || 15
         this.runTranslate()
     }
 
