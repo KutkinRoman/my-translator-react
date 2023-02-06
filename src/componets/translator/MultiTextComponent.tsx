@@ -1,30 +1,48 @@
 import React from 'react';
 import {observer} from "mobx-react-lite";
-import {Box, Card, FormControl, InputLabel, MenuItem, Select, styled} from "@mui/material";
-import {useAppStore} from "../../context/useAppStore";
+import {Box, Card, FormControl, IconButton, InputLabel, MenuItem, Select, styled, Tooltip} from "@mui/material";
 import TranslateLineComponent from "./TranslateLineComponent";
 import {langs} from "../../data/enums/Lang";
 import {voices} from "../../data/enums/Voice";
 import {grey} from "@mui/material/colors";
 import WordMeaningDialog from "./WordMeaningDialog";
-import {TranslateType, TranslateTypes} from "../../data/store/TranslatorStore";
+import {TranslateTypes} from "../../data/store/TranslatorStore";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+import {WordSoundService} from "../../data/services/WordSoundService";
+import {TranslatorProps} from "./Translator";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import {useAppStore} from "../../context/useAppStore";
 
-const MultiTextComponent = () => {
-    const translator = useAppStore().translatorStore;
+const wordSoundService = new WordSoundService();
+
+const MultiTextComponent = ({translatorStore, index}: TranslatorProps) => {
+    const appStore = useAppStore()
 
     const onChangeLangHandler = async (e: any) => {
-        translator.targetLang = e.target.value
-        await translator.runTranslate()
-        translator.updateTranslateLines()
+        translatorStore.targetLang = e.target.value
+        await translatorStore.runTranslate()
+        translatorStore.updateTranslateLines()
     }
 
     function onChangeVoiceHandler(e: any) {
-        translator.voice = e.target.value
+        translatorStore.voice = e.target.value
     }
 
     function onChangeTranslateTypeHandler(e: any) {
-        translator.translateType = e.target.value;
-        translator.updateTranslateLines()
+        translatorStore.translateType = e.target.value;
+        translatorStore.updateTranslateLines()
+    }
+
+    const removerTranslatorStore = () => appStore.removerTranslatorStoreByIndex(index)
+
+
+    const play = async () => {
+        const audio = await wordSoundService.getAudio({
+            text: translatorStore.translateText,
+            lang: translatorStore.targetLang,
+            voice: translatorStore.voice
+        })
+        await audio.play()
     }
 
     return (
@@ -36,7 +54,7 @@ const MultiTextComponent = () => {
                     labelId={'targetTextLangLabel'}
                     id={'targetTextLangSelect'}
                     label={'Lang'}
-                    value={translator.targetLang}
+                    value={translatorStore.targetLang}
                     onChange={onChangeLangHandler}
                 >
                     {langs.map(lang => {
@@ -57,7 +75,7 @@ const MultiTextComponent = () => {
                     labelId={'voiceLabel'}
                     id={'voiceSelect'}
                     label={'Voice'}
-                    value={translator.voice}
+                    value={translatorStore.voice}
                     onChange={onChangeVoiceHandler}
                 >
                     {voices.map(voice => {
@@ -78,7 +96,7 @@ const MultiTextComponent = () => {
                     labelId={'translateTypeLabel'}
                     id={'translateTypeSelect'}
                     label={'Translate Type'}
-                    value={translator.translateType}
+                    value={translatorStore.translateType}
                     onChange={onChangeTranslateTypeHandler}
                 >
                     {TranslateTypes.map(type => {
@@ -93,27 +111,58 @@ const MultiTextComponent = () => {
                     })}
                 </Select>
             </FormControl>
-            <CardStyled>
-                {translator.translateLines.map((line, idx) => {
+            <CardStyled style={{height: translatorStore.rows * 35}}>
+                {translatorStore.translateLines.map((line, idx) => {
                     return (
                         <TranslateLineComponent
                             key={`translate_lines_idx_${idx}`}
                             translateLine={line}
+                            translatorStore={translatorStore}
                         />
                     )
                 })}
             </CardStyled>
+            <CardFooterStyled>
+                <Box   style={{flexGrow: 1}}>
+                    <Tooltip title={'Play'}>
+                        <IconButton
+                            color={'primary'}
+                            onClick={play}
+                            size={'large'}
+                            disabled={!translatorStore.translateText}
+                            style={{flexGrow: 1}}
+                        >
+                            <VolumeUpIcon/>
+                        </IconButton>
+                    </Tooltip>
+                </Box>
+                <Box   style={{display: 'flex', justifyContent: 'flexEnd'}}>
+                    {index > 0 &&
+                        <Tooltip title={'Remove Line'}>
+                            <IconButton
+                                color={'primary'}
+                                onClick={removerTranslatorStore}
+                                size={'large'}
+                            >
+                                <DeleteForeverIcon/>
+                            </IconButton>
+                        </Tooltip>
+                    }
+                </Box>
+            </CardFooterStyled>
         </Box>
     );
 };
 
 const CardStyled = styled(Card)({
-    height: 350,
     padding: 5,
     background: grey[50],
     wordWrap: 'break-word',
-    // overflowY: 'scroll',
-    // overflowX: 'hidden'
+})
+
+const CardFooterStyled = styled('div')({
+    display: 'flex',
+    flexGrow: 1
 })
 
 

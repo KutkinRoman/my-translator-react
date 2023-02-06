@@ -7,16 +7,16 @@ import {grey, lightBlue} from "@mui/material/colors";
 import {WordMeaning} from "../../data/model/WordMeaning";
 import TranslateIcon from "@mui/icons-material/Translate";
 import {WordMeaningService} from "../../data/services/WordMeaningService";
+import {CommonTranslatorProps} from "./Translator";
 
 const wordSoundService = new WordSoundService()
 const wordMeaningService = new WordMeaningService();
 
-interface TranslateLineComponentProps {
+interface TranslateLineComponentProps extends CommonTranslatorProps{
     translateLine: string;
 }
 
-const TranslateLineComponent = ({translateLine}: TranslateLineComponentProps) => {
-    const translator = useAppStore().translatorStore
+const TranslateLineComponent = ({translateLine, translatorStore}: TranslateLineComponentProps) => {
     const wordMeaningDialogStore = useAppStore().wordMeaningDialogStore
 
     const [isPlay, setIsPlay] = useState(false)
@@ -35,8 +35,8 @@ const TranslateLineComponent = ({translateLine}: TranslateLineComponentProps) =>
         try {
             const audio = await wordSoundService.getAudio({
                 text: translateLine,
-                lang: translator.targetLang,
-                voice: translator.voice
+                lang: translatorStore.targetLang,
+                voice: translatorStore.voice
             })
             await audio.play()
         } catch (e) {
@@ -59,21 +59,21 @@ const TranslateLineComponent = ({translateLine}: TranslateLineComponentProps) =>
             setWordMeanings(response.data)
         }
 
-        if (translator.translateType){
+        if (translatorStore.translateType){
             searchMeaning()
         }
-    }, [translateLine, translator.translateType])
+    }, [translateLine, translatorStore.translateType])
 
     return (
         <WordComponentStyled>
             <Typography
-                children={translateLine + `${(translator.translateType === 'Sentence' && translateLine.length > 1) ? '.' : ''}`}
+                children={translateLine + `${(translatorStore.translateType === 'Sentence' && translateLine.length > 1) ? '.' : ''}`}
                 component={'span'}
                 style={{fontSize: 25}}
                 color={isPlay ? lightBlue[700] : grey[900]}
             />
             <SpaceSpan/>
-            {(translateLine.length > 1 && translator.translateType === 'Word') &&
+            {(translateLine.length > 1 && translatorStore.translateType === 'Word' && mainWordMeaning) &&
                 <Tooltip title={mainWordMeaning}>
                     <IconButtonTranslateStyled color={'primary'} onClick={onOpenDialogHandle}>
                         <TranslateIcon style={{fontSize: 15}}/>

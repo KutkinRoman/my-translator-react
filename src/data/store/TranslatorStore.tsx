@@ -25,6 +25,8 @@ export class TranslatorStore {
 
     voice = VoiceEnum.MALE_1;
 
+    rows = 1
+
     constructor() {
         makeAutoObservable(this, {})
     }
@@ -46,4 +48,5 @@ export class TranslatorStore {
         }
         this.updateTranslateLines()
     }
+
 }

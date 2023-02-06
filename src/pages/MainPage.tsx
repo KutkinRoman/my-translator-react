@@ -1,35 +1,62 @@
-import {Container, Grid, styled} from '@mui/material';
+import {Button, Container, Divider, styled} from '@mui/material';
 import React from 'react';
-import SourceTextComponent from "../componets/translator/SourceTextComponent";
-import MultiTextComponent from "../componets/translator/MultiTextComponent";
 import NavBar from "../componets/nav-bar/NavBar";
+import Translator from "../componets/translator/Translator";
+import {useAppStore} from "../context/useAppStore";
+import {observer} from "mobx-react-lite";
+import {TranslatorStore} from "../data/store/TranslatorStore";
 
 const MainPage = () => {
-    const id = (id: string) => `mainPage${id}`
+    const appStore = useAppStore();
+    const translatorStores = useAppStore().translatorStores
+
+    const onAddTranslatorHandler = () => {
+        appStore.setTranslatorStores([...appStore.translatorStores, new TranslatorStore()])
+    }
 
     return (
-        <WrapperStyled id={id('Wrapper')}>
+        <WrapperStyled>
             <NavBar/>
-            <ContainerStyled id={id('Container')} maxWidth={'xl'}>
-                <Grid container spacing={2} id={'Grid'}>
-                    <Grid item xs={12} sm={12} mb={6} lg={6}>
-                        <SourceTextComponent/>
-                    </Grid>
-                    <Grid item xs={12} sm={12} mb={6} lg={6}>
-                        <MultiTextComponent/>
-                    </Grid>
-                </Grid>
-            </ContainerStyled>
+            <Divider light/>
+            {translatorStores.map((translatorStore, index) => {
+                return (
+                    <React.Fragment>
+                        <ContainerStyled key={`translatorContainer${index}`} maxWidth={'xl'}>
+                            <Translator
+                                index={index}
+                                translatorStore={translatorStore}
+                            />
+                        </ContainerStyled>
+                        <Divider light/>
+                    </React.Fragment>
+                )
+            })}
+            <FooterContainerStyled maxWidth={'xl'}>
+                <Button
+                    variant={'outlined'}
+                    size={'small'}
+                    fullWidth
+                    onClick={onAddTranslatorHandler}
+                    disabled={translatorStores.length > 100}
+                >
+                    Add LINE
+                </Button>
+            </FooterContainerStyled>
         </WrapperStyled>
     );
 };
 
-const WrapperStyled = styled('div')({});
-
-const ContainerStyled = styled(Container)({
-    paddingTop: 100,
+const WrapperStyled = styled('div')({
+    overflowX: 'hidden',
     paddingBottom: 100
 });
 
+const ContainerStyled = styled(Container)({
+    overflowX: 'hidden',
+});
 
-export default MainPage;
+const FooterContainerStyled = styled(Container)({
+    paddingTop: 50
+});
+
+export default observer(MainPage);

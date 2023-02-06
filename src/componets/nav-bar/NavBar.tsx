@@ -29,10 +29,9 @@ const NavBar = () => {
     )
 };
 
-const NavBarWrapper = styled(Box,)((theme) => (
-    {
-        flexGrow: 1
-    }
-))
+const NavBarWrapper = styled(Box,)((theme) => ({
+    paddingBottom: 100,
+    flexGrow: 1
+}))
 
 export default NavBar;
