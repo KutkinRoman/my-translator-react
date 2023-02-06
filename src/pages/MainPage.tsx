@@ -70,8 +70,11 @@ const BackgroundColor = styled('div')(({theme}) => (
     }
 ));
 
+
+
 const BackgroundImage = styled('div')({
-    background: 'url(\"https://i.postimg.cc/15qsb794/background-dark.jpg\") no-repeat center right',
+    background: 'url(\"https://gamerwall.pro/uploads/posts/2022-03/1648671880_2-gamerwall-pro-p-fon-na-rabochii-stol-noch-krasivie-2.jpg\") no-repeat center right',
+    // background: 'url(\"https://i.postimg.cc/15qsb794/background-dark.jpg\") no-repeat center right',
     backgroundSize: "cover",
     position: 'absolute',
     top: 0,
