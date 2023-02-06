@@ -103,14 +103,14 @@ const SpaceSpan = styled(IconButton)({
 
 const IconButtonTranslateStyled = styled(IconButton)({
     position: 'absolute',
-    top: -20,
+    top: -27,
     right: 20,
     zIndex: 1
 })
 
 const IconButtonPlayStyled = styled(IconButton)({
     position: 'absolute',
-    top: -20,
+    top: -27,
     right: 0,
     zIndex: 1
 })
