@@ -20,9 +20,9 @@ const NavBar = () => {
                     <Typography variant={'subtitle1'}>
                         {theme.palette.mode === 'dark' ? 'Dark Mode' : 'Light Mode'}
                     </Typography>
-                    <IconButton onClick={colorMode.toggleColorMode} color={'inherit'}>
-                        {theme.palette.mode === 'dark' ? <Brightness7Icon/> : <Brightness4Icon/>}
-                    </IconButton>
+                    {/*<IconButton onClick={colorMode.toggleColorMode} color={'inherit'}>*/}
+                    {/*    {theme.palette.mode === 'dark' ? <Brightness7Icon/> : <Brightness4Icon/>}*/}
+                    {/*</IconButton>*/}
                 </Toolbar>
             </AppBar>
         </NavBarWrapper>
