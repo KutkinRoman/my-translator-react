@@ -134,6 +134,7 @@ const MultiTextComponent = ({translatorStore, index}: TranslatorProps) => {
                             key={`translate_lines_idx_${idx}`}
                             translateLine={line}
                             translatorStore={translatorStore}
+                            lineIndex={idx}
                         />
                     )
                 })}

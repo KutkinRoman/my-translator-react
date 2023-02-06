@@ -3,7 +3,6 @@ import {IconButton, styled, Tooltip, Typography, useTheme} from "@mui/material";
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import {WordSoundService} from "../../data/services/WordSoundService";
 import {useAppStore} from "../../context/useAppStore";
-import {grey, lightBlue} from "@mui/material/colors";
 import {WordMeaning} from "../../data/model/WordMeaning";
 import TranslateIcon from "@mui/icons-material/Translate";
 import {WordMeaningService} from "../../data/services/WordMeaningService";
@@ -12,11 +11,12 @@ import {CommonTranslatorProps} from "./Translator";
 const wordSoundService = new WordSoundService()
 const wordMeaningService = new WordMeaningService();
 
-interface TranslateLineComponentProps extends CommonTranslatorProps{
+interface TranslateLineComponentProps extends CommonTranslatorProps {
     translateLine: string;
+    lineIndex: number;
 }
 
-const TranslateLineComponent = ({translateLine, translatorStore}: TranslateLineComponentProps) => {
+const TranslateLineComponent = ({translateLine, translatorStore, lineIndex}: TranslateLineComponentProps) => {
     const wordMeaningDialogStore = useAppStore().wordMeaningDialogStore
     const theme = useTheme();
     const [isPlay, setIsPlay] = useState(false)
@@ -61,7 +61,7 @@ const TranslateLineComponent = ({translateLine, translatorStore}: TranslateLineC
             setWordMeanings(response.data)
         }
 
-        if (translatorStore.translateType){
+        if (translatorStore.translateType) {
             searchMeaning()
         }
     }, [translateLine, translatorStore.translateType])
@@ -77,14 +77,15 @@ const TranslateLineComponent = ({translateLine, translatorStore}: TranslateLineC
             <SpaceSpan/>
             {(translateLine.length > 1 && translatorStore.translateType === 'Word' && mainWordMeaning) &&
                 <Tooltip title={mainWordMeaning}>
-                    <IconButtonTranslateStyled color={'primary'} onClick={onOpenDialogHandle}>
+                    <IconButtonTranslateStyled id={`btnMeaningDialog_${lineIndex}_${translateLine}`} color={'primary'}
+                                               onClick={onOpenDialogHandle}>
                         <TranslateIcon style={{fontSize: 15}}/>
                     </IconButtonTranslateStyled>
                 </Tooltip>
             }
             {translateLine.length > 1 &&
                 <Tooltip title={'Play'}>
-                    <IconButtonPlayStyled color={'primary'} onClick={play}>
+                    <IconButtonPlayStyled id={`btnPlay_${lineIndex}_${translateLine}`} color={'primary'} onClick={play}>
                         <VolumeUpIcon style={{fontSize: 15}}/>
                     </IconButtonPlayStyled>
                 </Tooltip>
