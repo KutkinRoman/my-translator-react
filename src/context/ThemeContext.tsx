@@ -80,12 +80,12 @@ const newDarkTheme = createTheme({
             // secondary: '#ea580c'
         },
 
-        divider: '#ff4f00',
+        divider: 'rgba(79,2,31,0.5)',
 
         background: {
             // default: '#000810',
             // paper: '#000810'
-            default: '#020125',
+            default: 'rgb(0, 8, 16)',
             paper: '#020125'
         },
 

@@ -31,7 +31,7 @@ const MainPage = () => {
             <BackgroundImage>
                 <WrapperStyled>
                     <NavBar/>
-                    <Divider light/>
+                    {/*<Divider/>*/}
                     {translatorStores.map((translatorStore, index) => {
                         return (
                             <React.Fragment>
@@ -41,7 +41,7 @@ const MainPage = () => {
                                         translatorStore={translatorStore}
                                     />
                                 </ContainerStyled>
-                                <Divider light/>
+                                {/*<Divider/>*/}
                             </React.Fragment>
                         )
                     })}
@@ -71,8 +71,13 @@ const BackgroundColor = styled('div')(({theme}) => (
 ));
 
 const BackgroundImage = styled('div')({
-    background: 'url(\"https://i.postimg.cc/15qsb794/background-dark.jpg\") no-repeat center',
-    backgroundSize: "cover"
+    background: 'url(\"https://i.postimg.cc/15qsb794/background-dark.jpg\") no-repeat center right',
+    backgroundSize: "cover",
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0
 })
 
 const WrapperStyled = styled('div')(({theme}) => (
@@ -80,8 +85,12 @@ const WrapperStyled = styled('div')(({theme}) => (
         overflowX: 'hidden',
         paddingBottom: 100,
         minHeight: '100vh',
-        background: 'linear-gradient(rgba(0, 8, 16, 0.5) 0%, rgba(0, 8, 16, 0.7),  rgba(0, 8, 16, 0.85), rgba(0, 8, 16, 0.95) 85%)'
-        // background: 'linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7),  rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95) 85%)'
+        background: 'linear-gradient(rgba(0, 8, 16, 0.5) 0%, rgba(0, 8, 16, 0.7),  rgba(0, 8, 16, 0.85), rgba(0, 8, 16, 0.95) 85%)',
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
     }
 ));
 
