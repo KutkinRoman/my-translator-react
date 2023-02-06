@@ -18,6 +18,7 @@ import {WordSoundService} from "../../data/services/WordSoundService";
 import {TranslatorProps} from "./Translator";
 import {useLocation} from "react-router-dom";
 import {useAppStore} from "../../context/useAppStore";
+import {CommonCardStyled} from "../common/styled";
 
 const wordSoundService = new WordSoundService();
 
@@ -133,9 +134,8 @@ const SourceTextComponent = ({translatorStore, index}: TranslatorProps) => {
     );
 };
 
-const CardStyled = styled(Card)({
+const CardStyled = styled(CommonCardStyled)({
     padding: 5,
-    // background: grey[50]
 })
 
 const TextareaStyled = styled('textarea')({

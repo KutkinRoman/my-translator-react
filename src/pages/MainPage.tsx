@@ -1,4 +1,4 @@
-import {Button, Container, Divider, styled} from '@mui/material';
+import {Button, Container, styled, useTheme} from '@mui/material';
 import React, {useEffect} from 'react';
 import NavBar from "../componets/nav-bar/NavBar";
 import Translator from "../componets/translator/Translator";
@@ -11,7 +11,7 @@ import {useLocation} from "react-router-dom";
 const MainPage = () => {
     const location = useLocation();
     const params = new URLSearchParams(location.search)
-
+    const theme = useTheme()
     const appStore = useAppStore();
     const translatorStores = useAppStore().translatorStores
 
@@ -28,72 +28,97 @@ const MainPage = () => {
 
     return (
         <BackgroundColor>
-            <BackgroundImage>
-                <WrapperStyled>
-                    <NavBar/>
-                    {/*<Divider/>*/}
-                    {translatorStores.map((translatorStore, index) => {
-                        return (
-                            <React.Fragment>
-                                <ContainerStyled key={`translatorContainer${index}`} maxWidth={'xl'}>
-                                    <Translator
-                                        index={index}
-                                        translatorStore={translatorStore}
-                                    />
-                                </ContainerStyled>
-                                {/*<Divider/>*/}
-                            </React.Fragment>
-                        )
-                    })}
-                    <FooterContainerStyled maxWidth={'xl'}>
-                        <Button
-                            variant={'text'}
-                            size={'small'}
-                            color={'secondary'}
-                            fullWidth
-                            onClick={onAddTranslatorHandler}
-                            disabled={translatorStores.length > 100}
-                        >
-                            Add LINE
-                        </Button>
-                    </FooterContainerStyled>
-                </WrapperStyled>
-            </BackgroundImage>
+            {theme.palette.mode === 'light'
+                ? <React.Fragment>
+                    <BackgroundImageLight/>
+                    <WrapperLinearGradientLight/>
+                </React.Fragment>
+                : <React.Fragment>
+                    <BackgroundImageDark/>
+                    <WrapperLinearGradientDark/>
+                </React.Fragment>
+            }
+            <NavBar/>
+            {/*<Divider/>*/}
+            {translatorStores.map((translatorStore, index) => {
+                return (
+                    <React.Fragment>
+                        <ContainerStyled key={`translatorContainer${index}`} maxWidth={'xl'}>
+                            <Translator
+                                index={index}
+                                translatorStore={translatorStore}
+                            />
+                        </ContainerStyled>
+                        {/*<Divider/>*/}
+                    </React.Fragment>
+                )
+            })}
+            <FooterContainerStyled maxWidth={'xl'}>
+                <Button
+                    variant={'text'}
+                    size={'small'}
+                    color={'secondary'}
+                    fullWidth
+                    onClick={onAddTranslatorHandler}
+                    disabled={translatorStores.length > 100}
+                >
+                    Add LINE
+                </Button>
+            </FooterContainerStyled>
         </BackgroundColor>
     );
 };
 
-
 const BackgroundColor = styled('div')(({theme}) => (
     {
-        background: theme.palette.background.default
+        position: 'relative',
+        background: 'transparent',
+        minHeight: '100vh',
+    }
+));
+
+const BackgroundImage = styled('div')({
+    backgroundSize: "cover",
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    height: '100vh',
+    width: '100vw',
+    zIndex: -20
+})
+
+const BackgroundImageLight = styled(BackgroundImage)({
+    // background: 'url(\"https://gamerwall.pro/uploads/posts/2022-03/1648671880_2-gamerwall-pro-p-fon-na-rabochii-stol-noch-krasivie-2.jpg\") no-repeat center',
+})
+
+
+const BackgroundImageDark = styled(BackgroundImage)({
+    background: 'url(\"https://gamerwall.pro/uploads/posts/2022-03/1648671880_2-gamerwall-pro-p-fon-na-rabochii-stol-noch-krasivie-2.jpg\") no-repeat center',
+})
+
+
+const WrapperLinearGradient = styled('div')(({theme}) => (
+    {
+        overflowX: 'hidden',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        height: '100vh',
+        width: '100vw',
+        zIndex: -10,
+    }
+));
+
+const WrapperLinearGradientLight = styled(WrapperLinearGradient)(({theme}) => (
+    {
+        // background: 'linear-gradient(rgba(0, 8, 16, 0.5) 0%, rgba(0, 8, 16, 0.7),  rgba(0, 8, 16, 0.85), rgba(0, 8, 16, 0.95) 85%)',
     }
 ));
 
 
-
-const BackgroundImage = styled('div')({
-    background: 'url(\"https://gamerwall.pro/uploads/posts/2022-03/1648671880_2-gamerwall-pro-p-fon-na-rabochii-stol-noch-krasivie-2.jpg\") no-repeat center right',
-    // background: 'url(\"https://i.postimg.cc/15qsb794/background-dark.jpg\") no-repeat center right',
-    backgroundSize: "cover",
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0
-})
-
-const WrapperStyled = styled('div')(({theme}) => (
+const WrapperLinearGradientDark = styled(WrapperLinearGradient)(({theme}) => (
     {
-        overflowX: 'hidden',
-        paddingBottom: 100,
-        minHeight: '100vh',
         background: 'linear-gradient(rgba(0, 8, 16, 0.5) 0%, rgba(0, 8, 16, 0.7),  rgba(0, 8, 16, 0.85), rgba(0, 8, 16, 0.95) 85%)',
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0,
     }
 ));
 
@@ -102,7 +127,6 @@ const ContainerStyled = styled(Container)({
 });
 
 const FooterContainerStyled = styled(Container)({
-    paddingTop: 50,
     paddingBottom: 100
 });
 

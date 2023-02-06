@@ -16,6 +16,7 @@ import {VoiceEnum, voices} from "../../data/enums/Voice";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import {WordSoundService} from "../../data/services/WordSoundService";
 import {Lang} from "../../data/enums/Lang";
+import {CommonCardStyled} from "../common/styled";
 
 const wordSoundService = new WordSoundService();
 
@@ -40,7 +41,7 @@ const WordMeaningCard = ({word, meaning}: WordMeaningCardProps) => {
     const onChangeVoiceHandler = (e: any) => setCurrentVoice(e.target.value)
 
     return (
-        <Card style={{height: 550}}>
+        <CommonCardStyled style={{height: 550}}>
             <CardContent>
                 <Typography variant={'h6'} color={lightBlue[700]}>
                     {word}
@@ -93,7 +94,7 @@ const WordMeaningCard = ({word, meaning}: WordMeaningCardProps) => {
                     </Select>
                 </FormControl>
             </CardActions>
-        </Card>
+        </CommonCardStyled>
     );
 };
 

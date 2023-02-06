@@ -86,7 +86,7 @@ const newDarkTheme = createTheme({
             // default: '#000810',
             // paper: '#000810'
             default: 'rgb(0, 8, 16)',
-            paper: '#020125'
+            paper: 'rgba(2,1,37,0.8)',
         },
 
 

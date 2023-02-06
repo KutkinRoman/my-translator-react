@@ -12,6 +12,7 @@ import {TranslatorProps} from "./Translator";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import {useAppStore} from "../../context/useAppStore";
 import {useLocation} from "react-router-dom";
+import {CommonCardStyled} from "../common/styled";
 
 const wordSoundService = new WordSoundService();
 
@@ -169,9 +170,8 @@ const MultiTextComponent = ({translatorStore, index}: TranslatorProps) => {
     );
 };
 
-const CardStyled = styled(Card)({
+const CardStyled = styled(CommonCardStyled)({
     padding: 5,
-    // background: grey[50],
     wordWrap: 'break-word',
 })
 

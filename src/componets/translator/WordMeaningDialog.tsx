@@ -9,6 +9,7 @@ import {lightBlue} from "@mui/material/colors";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import {VoiceEnum} from "../../data/enums/Voice";
 import WordMeaningCard from "./WordMeaningCard";
+import {CommonDialogActions, CommonDialogContent, CommonDialogTitle} from "../common/styled";
 
 
 const WordMeaningDialog = () => {
@@ -41,8 +42,8 @@ const WordMeaningDialog = () => {
                     aria-describedby="scroll-dialog-description"
                     maxWidth={'lg'}
                 >
-                    <DialogTitle id="scroll-dialog-title">Meanings</DialogTitle>
-                    <DialogContent dividers={true}>
+                    <CommonDialogTitle id="scroll-dialog-title" >Meanings</CommonDialogTitle>
+                    <CommonDialogContent dividers={true}>
                         <Grid
                             key={`grid`}
                             container
@@ -66,10 +67,10 @@ const WordMeaningDialog = () => {
                                 )
                             })}
                         </Grid>
-                    </DialogContent>
-                    <DialogActions>
+                    </CommonDialogContent>
+                    <CommonDialogActions>
                         <Button onClick={onCloseHandle}>Close</Button>
-                    </DialogActions>
+                    </CommonDialogActions>
                 </Dialog>
             </Box>
         )
