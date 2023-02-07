@@ -1,22 +1,56 @@
-import {AppBar, Box, IconButton, styled, Toolbar, Typography, useTheme} from '@mui/material';
+import {AppBar, Box, Button, IconButton, keyframes, styled, Toolbar, Typography, useTheme} from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import React from 'react';
 import {useColorMode} from "../../context/ThemeContext";
+import { useNavigate } from "react-router-dom";
+import { bounce, fadeInDown } from 'react-animations'
+import {fadeInDownFunc} from "../animation";
+
+
+interface NavItem {
+    name: string;
+    path: string;
+}
+
+const navItems: NavItem[] = [
+    {
+        name: 'Translator',
+        path: '/'
+    },
+    {
+        name: 'Grammar',
+        path: '/grammar'
+    }
+]
 
 const NavBar = () => {
-
     const theme = useTheme()
     const colorMode = useColorMode()
+    const navigation = useNavigate()
 
     return (
         <NavBarWrapper>
             <AppBar position="static">
                 <Toolbar>
-                    <Typography variant={'h6'}>
-                        My Translator App
-                    </Typography>
-                    <Box style={{flexGrow: 1}}/>
+                    <ToolbarContentStyled>
+                        {/*<Typography variant={'h6'}>*/}
+                        {/*    My Translator App*/}
+                        {/*</Typography>*/}
+                        {navItems.map(item => {
+                            return (
+                                <Button
+                                    id={`navItem${item.name}`}
+                                    key={`navItem${item.name}`}
+                                    variant={'text'}
+                                    color={'secondary'}
+                                    size={'large'}
+                                    onChange={() => navigation(item.path)}
+                                    children={item.name}
+                                />
+                            )
+                        })}
+                    </ToolbarContentStyled>
                     <Typography variant={'subtitle1'}>
                         {theme.palette.mode === 'dark' ? 'Dark Mode' : 'Light Mode'}
                     </Typography>
@@ -40,6 +74,11 @@ const NavBarWrapper = styled(Box)(({theme}) => ({
     [theme.breakpoints.up('lg')]: {
         paddingBottom: 100
     },
+    animation: fadeInDownFunc()
 }))
+
+const ToolbarContentStyled = styled(Box)({
+    flexGrow: 1
+})
 
 export default NavBar;

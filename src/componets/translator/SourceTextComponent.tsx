@@ -19,6 +19,7 @@ import {TranslatorProps} from "./Translator";
 import {useLocation} from "react-router-dom";
 import {useAppStore} from "../../context/useAppStore";
 import {CommonCardStyled} from "../common/styled";
+import {fadeInLeftFunc} from "../animation";
 
 const wordSoundService = new WordSoundService();
 
@@ -64,7 +65,7 @@ const SourceTextComponent = ({translatorStore, index}: TranslatorProps) => {
     }
 
     return (
-        <Box>
+        <WrapperStyled>
             <FormControl variant={'standard'} sx={{m: 1, minWidth: 50}}>
                 <InputLabel id={'rowLabel'}>Rows</InputLabel>
                 <Select
@@ -127,10 +128,14 @@ const SourceTextComponent = ({translatorStore, index}: TranslatorProps) => {
                     <VolumeUpIcon/>
                 </IconButton>
             </Tooltip>
-        </Box>
+        </WrapperStyled>
 
     );
 };
+
+const WrapperStyled = styled(Box)({
+    animation: fadeInLeftFunc(),
+})
 
 const CardStyled = styled(CommonCardStyled)({
     padding: 5,

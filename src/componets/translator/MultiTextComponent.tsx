@@ -13,6 +13,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import {useAppStore} from "../../context/useAppStore";
 import {useLocation} from "react-router-dom";
 import {CommonCardStyled} from "../common/styled";
+import {fadeInLeftFunc, fadeInRightFunc} from "../animation";
 
 const wordSoundService = new WordSoundService();
 
@@ -62,7 +63,7 @@ const MultiTextComponent = ({translatorStore, index}: TranslatorProps) => {
     }
 
     return (
-        <Box>
+        <WrapperStyled>
             <WordMeaningDialog/>
             <FormControl variant={'standard'} sx={{m: 1, minWidth: 50}}>
                 <InputLabel id={'targetTextLangLabel'}>Lang</InputLabel>
@@ -167,9 +168,14 @@ const MultiTextComponent = ({translatorStore, index}: TranslatorProps) => {
                     }
                 </Box>
             </CardFooterStyled>
-        </Box>
+        </WrapperStyled>
     );
 };
+
+const WrapperStyled = styled(Box)({
+    animation: fadeInRightFunc(),
+})
+
 
 const CardStyled = styled(CommonCardStyled)({
     padding: 5,
