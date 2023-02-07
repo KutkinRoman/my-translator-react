@@ -78,17 +78,24 @@ const TranslateLineComponent = ({translateLine, translatorStore, lineIndex}: Tra
             <SpaceSpan/>
             {(translateLine.length > 1 && translatorStore.translateType === 'Word' && mainWordMeaning) &&
                 <Tooltip title={mainWordMeaning}>
-                    <IconButtonTranslateStyled id={`btnMeaningDialog_${lineIndex}_${translateLine}`} color={'primary'}
+                    <IconButtonMeaningWordStyled id={`btnMeaningDialog_${lineIndex}_${translateLine}`} color={'primary'}
                                                onClick={onOpenDialogHandle}>
                         <TranslateIcon style={{fontSize: 15}}/>
-                    </IconButtonTranslateStyled>
+                    </IconButtonMeaningWordStyled>
                 </Tooltip>
             }
-            {translateLine.length > 1 &&
+            {(translateLine.length > 1 && translatorStore.translateType === 'Word') &&
                 <Tooltip title={'Play'}>
-                    <IconButtonPlayStyled id={`btnPlay_${lineIndex}_${translateLine}`} color={'primary'} onClick={play}>
+                    <IconButtonPlayWordStyled id={`btnPlay_${lineIndex}_${translateLine}`} color={'primary'} onClick={play}>
                         <VolumeUpIcon style={{fontSize: 15}}/>
-                    </IconButtonPlayStyled>
+                    </IconButtonPlayWordStyled>
+                </Tooltip>
+            }
+            {(translateLine.length > 1 && translatorStore.translateType === 'Sentence') &&
+                <Tooltip title={'Play'}>
+                    <IconButtonPlaySentenceStyled id={`btnPlay_${lineIndex}_${translateLine}`} color={'primary'} onClick={play}>
+                        <VolumeUpIcon style={{fontSize: 15}}/>
+                    </IconButtonPlaySentenceStyled>
                 </Tooltip>
             }
         </WordComponentStyled>
@@ -103,17 +110,24 @@ const SpaceSpan = styled(IconButton)({
     minWidth: 5
 })
 
-const IconButtonTranslateStyled = styled(IconButton)({
+const IconButtonMeaningWordStyled = styled(IconButton)({
     position: 'absolute',
     top: -27,
-    right: 20,
+    left: 20,
     zIndex: 1
 })
 
-const IconButtonPlayStyled = styled(IconButton)({
+const IconButtonPlayWordStyled = styled(IconButton)({
     position: 'absolute',
     top: -27,
-    right: 0,
+    left: 0,
+    zIndex: 1
+})
+
+const IconButtonPlaySentenceStyled = styled(IconButton)({
+    position: 'absolute',
+    top: -27,
+    left: 0,
     zIndex: 1
 })
 

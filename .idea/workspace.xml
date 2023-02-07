@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e1a667d-db95-4912-aac1-fe9644419a7a" name="Changes" comment="theme.breakpoints">
-      <change beforePath="$PROJECT_DIR$/src/data/store/TranslatorStore.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/store/TranslatorStore.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/componets/translator/TranslateLineComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/componets/translator/TranslateLineComponent.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675744037614</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="theme.breakpoints">
+      <created>1675744644751</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1675744644751</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
