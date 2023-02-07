@@ -19,6 +19,10 @@ const navItems: NavItem[] = [
     {
         name: 'Grammar',
         path: '/grammar'
+    },
+    {
+        name: 'Video',
+        path: '/movie'
     }
 ]
 

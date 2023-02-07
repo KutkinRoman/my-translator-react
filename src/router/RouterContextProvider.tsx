@@ -6,6 +6,7 @@ import GrammarPage from "../pages/GrammarPage";
 import ToBePositive from "../componets/grammar/ToBePositive";
 import ToBeNegative from "../componets/grammar/ToBeNegative";
 import ToBeQuestionsShortAnswers from "../componets/grammar/ToBeQuestionsShortAnswers";
+import MoviePage from "../pages/MoviePage";
 
 const RouterContextProvider = () => {
     return (
@@ -15,6 +16,7 @@ const RouterContextProvider = () => {
             <Route path={'/grammar/to-be-positive'} element={<ToBePositive/>}/>
             <Route path={'/grammar/to-be-negative'} element={<ToBeNegative/>}/>
             <Route path={'/grammar/to-be-questions-short-answers'} element={<ToBeQuestionsShortAnswers/>}/>
+            <Route path={'/movie'} element={<MoviePage/>}/>
         </Routes>
     );
 };
