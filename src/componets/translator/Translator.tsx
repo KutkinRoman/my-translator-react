@@ -17,7 +17,7 @@ const Translator = ({translatorStore, index}: TranslatorProps) => {
 
     return (
         <React.Fragment>
-            <Grid container spacing={2} id={'Grid'}>
+            <Grid container spacing={1} id={'Grid'}>
                 <Grid item xs={12} sm={12} mb={6} lg={6}>
                     <SourceTextComponent translatorStore={translatorStore} index={index}/>
                 </Grid>

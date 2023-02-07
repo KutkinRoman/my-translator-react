@@ -66,6 +66,7 @@ const TranslateLineComponent = ({translateLine, translatorStore, lineIndex}: Tra
         }
     }, [translateLine, translatorStore.translateType])
 
+
     return (
         <WordComponentStyled>
             <Typography
