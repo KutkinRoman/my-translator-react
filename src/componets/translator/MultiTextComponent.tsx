@@ -13,7 +13,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import {useAppStore} from "../../context/useAppStore";
 import {useLocation} from "react-router-dom";
 import {CommonCardStyled} from "../common/styled";
-import {fadeInLeftFunc, fadeInRightFunc} from "../animation";
+import {fadeInLeftFunc, fadeInRightFunc} from "../animation/animation";
 
 const wordSoundService = new WordSoundService();
 

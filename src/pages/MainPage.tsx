@@ -7,7 +7,7 @@ import {observer} from "mobx-react-lite";
 import {TranslatorParams, TranslatorStore} from "../data/store/TranslatorStore";
 import {useLocation} from "react-router-dom";
 import Background from "../componets/background/Background";
-import {fadeInUpFunc} from "../componets/animation";
+import {fadeInUpFunc} from "../componets/animation/animation";
 
 
 const MainPage = () => {

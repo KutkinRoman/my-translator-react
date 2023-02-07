@@ -4,8 +4,7 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import React from 'react';
 import {useColorMode} from "../../context/ThemeContext";
 import {useNavigate} from "react-router-dom";
-import {fadeInDownFunc} from "../animation";
-
+import {fadeInDownFunc} from "../animation/animation";
 
 interface NavItem {
     name: string;
@@ -41,7 +40,7 @@ const NavBar = () => {
                                     variant={'text'}
                                     color={'secondary'}
                                     size={'large'}
-                                    // onChange={() => navigation()}
+                                    onClick={() => navigation(`${item.path}`)}
                                     children={item.name}
                                 />
                             )
@@ -70,7 +69,7 @@ const NavBarWrapper = styled(Box)(({theme}) => ({
     [theme.breakpoints.up('lg')]: {
         paddingBottom: 100
     },
-    animation: fadeInDownFunc()
+    // animation: fadeInDownFunc()
 }))
 
 const ToolbarContentStyled = styled(Box)({

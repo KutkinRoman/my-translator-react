@@ -19,7 +19,7 @@ import {TranslatorProps} from "./Translator";
 import {useLocation} from "react-router-dom";
 import {useAppStore} from "../../context/useAppStore";
 import {CommonCardStyled} from "../common/styled";
-import {fadeInLeftFunc} from "../animation";
+import {fadeInLeftFunc} from "../animation/animation";
 
 const wordSoundService = new WordSoundService();
 
