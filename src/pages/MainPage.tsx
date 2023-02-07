@@ -1,4 +1,4 @@
-import {Button, Container, styled, useTheme} from '@mui/material';
+import {Button, Container, styled} from '@mui/material';
 import React, {useEffect} from 'react';
 import NavBar from "../componets/nav-bar/NavBar";
 import Translator from "../componets/translator/Translator";
@@ -6,12 +6,12 @@ import {useAppStore} from "../context/useAppStore";
 import {observer} from "mobx-react-lite";
 import {TranslatorParams, TranslatorStore} from "../data/store/TranslatorStore";
 import {useLocation} from "react-router-dom";
+import Background from "../componets/background/Background";
 
 
 const MainPage = () => {
     const location = useLocation();
     const params = new URLSearchParams(location.search)
-    const theme = useTheme()
     const appStore = useAppStore();
     const translatorStores = useAppStore().translatorStores
 
@@ -27,19 +27,8 @@ const MainPage = () => {
     }, [])
 
     return (
-        <BackgroundColor>
-            {theme.palette.mode === 'light'
-                ? <React.Fragment>
-                    <BackgroundImageLight/>
-                    <WrapperLinearGradientLight/>
-                </React.Fragment>
-                : <React.Fragment>
-                    <BackgroundImageDark/>
-                    <WrapperLinearGradientDark/>
-                </React.Fragment>
-            }
+        <Background id={'mainPage'}>
             <NavBar/>
-            {/*<Divider/>*/}
             {translatorStores.map((translatorStore, index) => {
                 return (
                     <React.Fragment>
@@ -65,7 +54,7 @@ const MainPage = () => {
                     Add LINE
                 </Button>
             </FooterContainerStyled>
-        </BackgroundColor>
+        </Background>
     );
 };
 
@@ -89,11 +78,13 @@ const BackgroundImage = styled('div')({
 
 const BackgroundImageLight = styled(BackgroundImage)({
     background: 'url(\"https://gamerwall.pro/uploads/posts/2022-03/1648759064_6-gamerwall-pro-p-fon-dlya-bannera-more-krasivie-6.jpg\") no-repeat center',
+    backgroundSize: 'cover'
 })
 
 
 const BackgroundImageDark = styled(BackgroundImage)({
     background: 'url(\"https://gamerwall.pro/uploads/posts/2022-03/1648671880_2-gamerwall-pro-p-fon-na-rabochii-stol-noch-krasivie-2.jpg\") no-repeat center',
+    backgroundSize: 'cover'
 })
 
 
