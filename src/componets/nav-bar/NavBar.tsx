@@ -1,10 +1,9 @@
-import {AppBar, Box, Button, IconButton, keyframes, styled, Toolbar, Typography, useTheme} from '@mui/material';
+import {AppBar, Box, Button, IconButton, styled, Toolbar, Typography, useTheme} from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import React from 'react';
 import {useColorMode} from "../../context/ThemeContext";
-import { useNavigate } from "react-router-dom";
-import { bounce, fadeInDown } from 'react-animations'
+import {useNavigate} from "react-router-dom";
 import {fadeInDownFunc} from "../animation";
 
 
@@ -18,10 +17,10 @@ const navItems: NavItem[] = [
         name: 'Translator',
         path: '/'
     },
-    {
-        name: 'Grammar',
-        path: '/grammar'
-    }
+    // {
+    //     name: 'Grammar',
+    //     path: '/grammar'
+    // }
 ]
 
 const NavBar = () => {
@@ -34,9 +33,6 @@ const NavBar = () => {
             <AppBar position="static">
                 <Toolbar>
                     <ToolbarContentStyled>
-                        {/*<Typography variant={'h6'}>*/}
-                        {/*    My Translator App*/}
-                        {/*</Typography>*/}
                         {navItems.map(item => {
                             return (
                                 <Button
@@ -45,7 +41,7 @@ const NavBar = () => {
                                     variant={'text'}
                                     color={'secondary'}
                                     size={'large'}
-                                    onChange={() => navigation(item.path)}
+                                    // onChange={() => navigation()}
                                     children={item.name}
                                 />
                             )
