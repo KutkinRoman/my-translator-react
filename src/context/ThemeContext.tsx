@@ -68,7 +68,7 @@ const newDarkTheme = createTheme({
             dark: '#737373',
         },
 
-        divider: 'rgba(40,0,16,0.5)',
+        divider: 'rgba(93, 1, 38, 0.5)',
 
         background: {
             default: 'rgb(0, 8, 16)',
@@ -79,7 +79,6 @@ const newDarkTheme = createTheme({
     },
 
 });
-
 
 const ThemeContextProvider = ({children}: { children: React.ReactNode }) => {
     const [mode, setMode] = React.useState<'light' | 'dark'>('dark');

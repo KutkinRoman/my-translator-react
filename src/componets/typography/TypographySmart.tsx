@@ -13,29 +13,31 @@ import {Variant} from "@mui/material/styles/createTypography";
 interface TypographyTransProps {
     text?: string,
     variant?: OverridableStringUnion<Variant | 'inherit', TypographyPropsVariantOverrides>;
+
+    color?: ColorType
 }
 
-type TextType = 'default' | 'primary'
+type ColorType = 'default' | 'primary' | any
 
-const TypographySmart = ({text, variant}: TypographyTransProps) => {
+const TypographySmart = ({text, variant, color}: TypographyTransProps) => {
 
     const childrenMemo = useMemo(() => {
         if (text) {
             const chars = []
-            let type: TextType = 'default'
+            let colorType: any = color
             for (let i = 0; i < text.length; i++) {
                 const char = text[i]
                 if (char === '{') {
-                    type = 'primary'
+                    colorType = 'primary'
                     continue
                 }
                 if (char === '}') {
-                    type = 'default'
+                    colorType = color
                     continue
                 }
                 chars.push(
                     <TypographyMUI
-                        color={type}
+                        color={colorType}
                         variant={variant}
                         component={'span'}
                         children={char}
@@ -48,7 +50,7 @@ const TypographySmart = ({text, variant}: TypographyTransProps) => {
 
     return (
         <ContainerStyled>
-            {childrenMemo}
+            {childrenMemo}<br/>
         </ContainerStyled>
     );
 };

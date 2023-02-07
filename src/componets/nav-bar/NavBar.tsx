@@ -16,10 +16,10 @@ const navItems: NavItem[] = [
         name: 'Translator',
         path: '/'
     },
-    // {
-    //     name: 'Grammar',
-    //     path: '/grammar'
-    // }
+    {
+        name: 'Grammar',
+        path: '/grammar'
+    }
 ]
 
 const NavBar = () => {
