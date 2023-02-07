@@ -40,7 +40,7 @@ export class TranslatorStore {
 
     voice = VoiceEnum.MALE_1;
 
-    rows = 1
+    rows = 5
 
     constructor() {
         makeAutoObservable(this, {})
@@ -51,7 +51,7 @@ export class TranslatorStore {
     }
 
     async runTranslate() {
-        if (this.sourceLang !== this.targetLang && this.sourceText) {
+        if (this.sourceText) {
             const response = await this.wordTranslateService.translate({
                 q: this.sourceText,
                 src: this.sourceLang,

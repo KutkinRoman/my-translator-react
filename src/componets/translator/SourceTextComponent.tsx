@@ -44,8 +44,6 @@ const SourceTextComponent = ({translatorStore, index}: TranslatorProps) => {
 
     const onChangeLangHandler = async (e: any) => {
         translatorStore.sourceLang = e.target.value
-        translatorStore.sourceText = ''
-        translatorStore.translateText = ''
         await translatorStore.runTranslate()
         translatorStore.updateTranslateLines()
         updateParams()

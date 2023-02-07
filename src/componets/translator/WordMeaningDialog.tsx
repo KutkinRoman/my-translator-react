@@ -47,7 +47,7 @@ const WordMeaningDialog = () => {
                         <Grid
                             key={`grid`}
                             container
-                            spacing={2}
+                            spacing={1}
                         >
                             {store.wordMeanings.map((wordMeaning, inx) => {
                                 return (
