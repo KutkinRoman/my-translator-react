@@ -51,7 +51,7 @@ export class TranslatorStore {
     }
 
     async runTranslate() {
-        if (this.sourceLang !== this.targetLang && this.sourceText) {
+        if (this.sourceText) {
             const response = await this.wordTranslateService.translate({
                 q: this.sourceText,
                 src: this.sourceLang,

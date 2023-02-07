@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e1a667d-db95-4912-aac1-fe9644419a7a" name="Changes" comment="New Dark T">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/componets/nav-bar/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/componets/nav-bar/NavBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/componets/translator/TranslateLineComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/componets/translator/TranslateLineComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/componets/translator/Translator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/componets/translator/Translator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/componets/translator/WordMeaningDialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/componets/translator/WordMeaningDialog.tsx" afterDir="false" />
+    <list default="true" id="6e1a667d-db95-4912-aac1-fe9644419a7a" name="Changes" comment="theme.breakpoints">
       <change beforePath="$PROJECT_DIR$/src/data/store/TranslatorStore.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/store/TranslatorStore.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -183,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675702475119</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="theme.breakpoints">
+      <created>1675744037614</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1675744037614</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,7 +197,8 @@
     <MESSAGE value="Added Theme" />
     <MESSAGE value="New Background" />
     <MESSAGE value="New Dark T" />
-    <option name="LAST_COMMIT_MESSAGE" value="New Dark T" />
+    <MESSAGE value="theme.breakpoints" />
+    <option name="LAST_COMMIT_MESSAGE" value="theme.breakpoints" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

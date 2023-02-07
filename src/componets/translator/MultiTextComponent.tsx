@@ -1,6 +1,6 @@
 import React from 'react';
 import {observer} from "mobx-react-lite";
-import {Box, Card, FormControl, IconButton, InputLabel, MenuItem, Select, styled, Tooltip} from "@mui/material";
+import {Box, FormControl, IconButton, InputLabel, MenuItem, Select, styled, Tooltip} from "@mui/material";
 import TranslateLineComponent from "./TranslateLineComponent";
 import {langs} from "../../data/enums/Lang";
 import {voices} from "../../data/enums/Voice";
@@ -140,7 +140,7 @@ const MultiTextComponent = ({translatorStore, index}: TranslatorProps) => {
                 })}
             </CardStyled>
             <CardFooterStyled>
-                <Box   style={{flexGrow: 1}}>
+                <Box style={{flexGrow: 1}}>
                     <Tooltip title={'Play'}>
                         <IconButton
                             color={'primary'}
@@ -153,7 +153,7 @@ const MultiTextComponent = ({translatorStore, index}: TranslatorProps) => {
                         </IconButton>
                     </Tooltip>
                 </Box>
-                <Box   style={{display: 'flex', justifyContent: 'flexEnd'}}>
+                <Box style={{display: 'flex', justifyContent: 'flexEnd'}}>
                     {index > 0 &&
                         <Tooltip title={'Remove Line'}>
                             <IconButton
