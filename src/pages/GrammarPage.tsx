@@ -5,6 +5,8 @@ import {CardContent, Container, Grid, styled} from "@mui/material";
 import TypographySmart from "../componets/typography/TypographySmart";
 import {CommonCardStyled} from "../componets/common/styled";
 import {useNavigate} from "react-router-dom";
+import SpeedDial from "../componets/speed-dial/SpeedDial";
+import {zoomInFunc} from "../componets/animation/animation";
 
 const GrammarPage = () => {
     const navigate = useNavigate()
@@ -50,15 +52,17 @@ const GrammarPage = () => {
                     </Grid>
                 </Grid>
             </Container>
+            <SpeedDial/>
         </Background>
     );
 };
 
 const PageItemStyled = styled(CommonCardStyled)(({theme}) => ({
     height: 200,
-    "display": "flex",
-    "alignItems": "center",
-    "justifyContent": "center",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    animation: zoomInFunc(),
     ":hover": {
         cursor: 'pointer',
         boxShadow: `0px 0px 40px 0px rgba(6, 182, 212, 0.5)`,

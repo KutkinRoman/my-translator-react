@@ -1,7 +1,7 @@
 import React from 'react';
 import {styled, useTheme} from "@mui/material";
 
-interface BackgroundProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>{
+export interface BackgroundProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>{
     children?: React.ReactNode
 }
 

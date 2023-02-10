@@ -3,13 +3,11 @@ import Background from "../background/Background";
 import NavBar from "../nav-bar/NavBar";
 import {Card, CardContent, Container, Divider, Grid} from "@mui/material";
 import TypographySmart from "../typography/TypographySmart";
+import GrammarWrapper from "./GrammarWrapper";
 
 const ToBePositive = () => {
     return (
-        <Background>
-            <NavBar/>
-            <Container>
-                <Grid container spacing={1}>
+        <GrammarWrapper>
                     <Grid item xs={12} sm={12} mb={8} lg={8}>
                         <Card>
                             <CardContent>
@@ -131,9 +129,7 @@ const ToBePositive = () => {
                             </CardContent>
                         </Card>
                     </Grid>
-                </Grid>
-            </Container>
-        </Background>
+        </GrammarWrapper>
     );
 };
 
