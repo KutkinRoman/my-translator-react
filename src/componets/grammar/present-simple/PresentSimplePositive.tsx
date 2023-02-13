@@ -17,12 +17,20 @@ const PresentSimplePositive = () => {
                     <Divider/>
                     <CardContent>
                         <TypographySmart
-                            text={''}
+                            text={'Use {Present Simple} to talk about {regular actions}'}
                             variant={'subtitle1'}
                         />
                         <TypographySmart
-                            text={''}
+                            text={' - I always wake up at 8 o\'clock'}
+                            variant={'body2'}
+                        />
+                        <TypographySmart
+                            text={'Use {Present Simple} to talk about thing that are {generally true}'}
                             variant={'subtitle1'}
+                        />
+                        <TypographySmart
+                            text={' - Marta speaks French well'}
+                            variant={'body2'}
                         />
                         <TypographySmart
                             text={''}
