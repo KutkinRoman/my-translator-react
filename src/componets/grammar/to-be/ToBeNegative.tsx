@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card, CardContent, Divider, Grid} from "@mui/material";
-import TypographySmart from "../typography/TypographySmart";
-import GrammarWrapper from "./GrammarWrapper";
+import TypographySmart from "../../typography/TypographySmart";
+import GrammarWrapper from "./../GrammarWrapper";
 
 const ToBeNegative = () => {
     return (

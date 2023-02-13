@@ -20,8 +20,12 @@ const GrammarPage = () => {
                         <PageItemStyled onClick={() => navigate('to-be-positive')}>
                             <CardContent>
                                 <TypographySmart
-                                    text={'{To be} (positive)'}
+                                    text={'{To be}'}
                                     variant={'h5'}
+                                />
+                                <TypographySmart
+                                    text={'(positive)'}
+                                    variant={'subtitle1'}
                                 />
                             </CardContent>
                         </PageItemStyled>
@@ -30,8 +34,12 @@ const GrammarPage = () => {
                         <PageItemStyled onClick={() => navigate('to-be-negative')}>
                             <CardContent>
                                 <TypographySmart
-                                    text={'{To be} (negative)'}
+                                    text={'{To be}'}
                                     variant={'h5'}
+                                />
+                                <TypographySmart
+                                    text={'(negative)'}
+                                    variant={'subtitle1'}
                                 />
                             </CardContent>
                         </PageItemStyled>
@@ -45,7 +53,37 @@ const GrammarPage = () => {
                                 />
                                 <TypographySmart
                                     text={'(questions and short answers)'}
+                                    variant={'subtitle1'}
+                                />
+                            </CardContent>
+                        </PageItemStyled>
+                    </Grid>
+                </Grid>
+                <Grid container spacing={1}>
+                    <Grid item xs={6} sm={6} mb={4} lg={4}>
+                        <PageItemStyled onClick={() => navigate('present-simple-positive')}>
+                            <CardContent>
+                                <TypographySmart
+                                    text={'{Present Simple}'}
                                     variant={'h5'}
+                                />
+                                <TypographySmart
+                                    text={'(positive)'}
+                                    variant={'subtitle1'}
+                                />
+                            </CardContent>
+                        </PageItemStyled>
+                    </Grid>
+                    <Grid item xs={6} sm={6} mb={4} lg={4}>
+                        <PageItemStyled onClick={() => navigate('present-simple-negative')}>
+                            <CardContent>
+                                <TypographySmart
+                                    text={'{Present Simple}'}
+                                    variant={'h5'}
+                                />
+                                <TypographySmart
+                                    text={'(negative)'}
+                                    variant={'subtitle1'}
                                 />
                             </CardContent>
                         </PageItemStyled>
