@@ -5,5 +5,4 @@ export const fadeInDownFunc = (sec: number = 0.5) => `${sec}s ${keyframes(fadeIn
 export const fadeInLeftFunc = (sec: number = 0.5) => `${sec}s ${keyframes(fadeInLeft)}`
 export const fadeInRightFunc = (sec: number = 0.5) => `${sec}s ${keyframes(fadeInRight)}`
 export const fadeInUpFunc = (sec: number = 0.5) => `${sec}s ${keyframes(fadeInUp)}`
-
 export const zoomInFunc = (sec: number = 0.5) => `${sec}s ${keyframes(zoomIn)}`

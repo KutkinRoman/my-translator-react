@@ -9,91 +9,86 @@ import SpeedDial from "../componets/speed-dial/SpeedDial";
 import {zoomInFunc} from "../componets/animation/animation";
 
 const GrammarPage = () => {
-    const navigate = useNavigate()
-
     return (
         <Background>
             <NavBar/>
             <Container>
                 <Grid container spacing={1}>
-                    <Grid item xs={6} sm={6} mb={4} lg={4}>
-                        <PageItemStyled onClick={() => navigate('to-be-positive')}>
-                            <CardContent>
-                                <TypographySmart
-                                    text={'{To be}'}
-                                    variant={'h5'}
-                                />
-                                <TypographySmart
-                                    text={'(positive)'}
-                                    variant={'subtitle1'}
-                                />
-                            </CardContent>
-                        </PageItemStyled>
-                    </Grid>
-                    <Grid item xs={6} sm={6} mb={4} lg={4}>
-                        <PageItemStyled onClick={() => navigate('to-be-negative')}>
-                            <CardContent>
-                                <TypographySmart
-                                    text={'{To be}'}
-                                    variant={'h5'}
-                                />
-                                <TypographySmart
-                                    text={'(negative)'}
-                                    variant={'subtitle1'}
-                                />
-                            </CardContent>
-                        </PageItemStyled>
-                    </Grid>
-                    <Grid item xs={6} sm={6} mb={4} lg={4}>
-                        <PageItemStyled onClick={() => navigate('to-be-questions-short-answers')}>
-                            <CardContent>
-                                <TypographySmart
-                                    text={'{To be}'}
-                                    variant={'h5'}
-                                />
-                                <TypographySmart
-                                    text={'(questions and short answers)'}
-                                    variant={'subtitle1'}
-                                />
-                            </CardContent>
-                        </PageItemStyled>
-                    </Grid>
+                    <PageItem path={'to-be-positive'}>
+                        <TypographySmart
+                            text={'{To be}'}
+                            variant={'h5'}
+                        />
+                        <TypographySmart
+                            text={'(positive)'}
+                            variant={'subtitle1'}
+                        />
+                    </PageItem>
+                    <PageItem path={'to-be-negative'}>
+                        <TypographySmart
+                            text={'{To be}'}
+                            variant={'h5'}
+                        />
+                        <TypographySmart
+                            text={'(negative)'}
+                            variant={'subtitle1'}
+                        />
+                    </PageItem>
+                    <PageItem path={'to-be-questions-short-answers'}>
+                        <TypographySmart
+                            text={'{To be}'}
+                            variant={'h5'}
+                        />
+                        <TypographySmart
+                            text={'(questions and short answers)'}
+                            variant={'subtitle1'}
+                        />
+                    </PageItem>
                 </Grid>
                 <Grid container spacing={1}>
-                    <Grid item xs={6} sm={6} mb={4} lg={4}>
-                        <PageItemStyled onClick={() => navigate('present-simple-positive')}>
-                            <CardContent>
-                                <TypographySmart
-                                    text={'{Present Simple}'}
-                                    variant={'h5'}
-                                />
-                                <TypographySmart
-                                    text={'(positive)'}
-                                    variant={'subtitle1'}
-                                />
-                            </CardContent>
-                        </PageItemStyled>
-                    </Grid>
-                    <Grid item xs={6} sm={6} mb={4} lg={4}>
-                        <PageItemStyled onClick={() => navigate('present-simple-negative')}>
-                            <CardContent>
-                                <TypographySmart
-                                    text={'{Present Simple}'}
-                                    variant={'h5'}
-                                />
-                                <TypographySmart
-                                    text={'(negative)'}
-                                    variant={'subtitle1'}
-                                />
-                            </CardContent>
-                        </PageItemStyled>
-                    </Grid>
+                    <PageItem path={'present-simple-positive'}>
+                        <TypographySmart
+                            text={'{Present Simple}'}
+                            variant={'h5'}
+                        />
+                        <TypographySmart
+                            text={'(positive)'}
+                            variant={'subtitle1'}
+                        />
+                    </PageItem>
+                    <PageItem path={'present-simple-negative'}>
+                        <TypographySmart
+                            text={'{Present Simple}'}
+                            variant={'h5'}
+                        />
+                        <TypographySmart
+                            text={'(negative)'}
+                            variant={'subtitle1'}
+                        />
+                    </PageItem>
                 </Grid>
             </Container>
             <SpeedDial/>
         </Background>
     );
 };
+
+interface PageItem {
+    path: string;
+    children?: React.ReactNode;
+}
+
+
+const PageItem = ({path, children}: PageItem) => {
+    const navigate = useNavigate()
+    return (
+        <Grid item xs={6} sm={6} mb={4} lg={4}>
+            <PageItemStyled onClick={() => navigate(path)}>
+                <CardContent children={children}/>
+            </PageItemStyled>
+        </Grid>
+    )
+}
 
 const PageItemStyled = styled(CommonCardStyled)(({theme}) => ({
     height: 200,
