@@ -17,54 +17,44 @@ const GrammarPage = () => {
                     <PageItem path={'to-be-positive'}>
                         <TypographySmart
                             text={'{To be}'}
-                            variant={'h5'}
-                        />
+                            variant={'h5'}/>
                         <TypographySmart
                             text={'(positive)'}
-                            variant={'subtitle1'}
-                        />
+                            variant={'subtitle1'}/>
                     </PageItem>
                     <PageItem path={'to-be-negative'}>
                         <TypographySmart
                             text={'{To be}'}
-                            variant={'h5'}
-                        />
+                            variant={'h5'}/>
                         <TypographySmart
                             text={'(negative)'}
-                            variant={'subtitle1'}
-                        />
+                            variant={'subtitle1'}/>
                     </PageItem>
                     <PageItem path={'to-be-questions-short-answers'}>
                         <TypographySmart
                             text={'{To be}'}
-                            variant={'h5'}
-                        />
+                            variant={'h5'}/>
                         <TypographySmart
                             text={'(questions and short answers)'}
-                            variant={'subtitle1'}
-                        />
+                            variant={'subtitle1'}/>
                     </PageItem>
                 </Grid>
                 <Grid container spacing={1}>
                     <PageItem path={'present-simple-positive'}>
                         <TypographySmart
                             text={'{Present Simple}'}
-                            variant={'h5'}
-                        />
+                            variant={'h5'}/>
                         <TypographySmart
                             text={'(positive)'}
-                            variant={'subtitle1'}
-                        />
+                            variant={'subtitle1'}/>
                     </PageItem>
                     <PageItem path={'present-simple-negative'}>
                         <TypographySmart
                             text={'{Present Simple}'}
-                            variant={'h5'}
-                        />
+                            variant={'h5'}/>
                         <TypographySmart
                             text={'(negative)'}
-                            variant={'subtitle1'}
-                        />
+                            variant={'subtitle1'}/>
                     </PageItem>
                 </Grid>
             </Container>
